@@ -45,3 +45,6 @@ while opcion != 5:
         cliente = Cliente(id = id)
         clientes_eliminados = ClienteDAO.eliminar(cliente)
         print(f'Se ha eliminado el cliente, registros afectados: {clientes_eliminados}')
+
+    else:
+        print('Salimos de la aplicacion...')
