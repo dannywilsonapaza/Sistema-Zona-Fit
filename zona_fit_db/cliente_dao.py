@@ -9,7 +9,7 @@ class ClienteDAO:
     ELIMINAR = 'DELETE FROM cliente WHERE id=%s'
 
     @classmethod
-    def seleccionar(cls, cursor):
+    def seleccionar(cls):
         conexion = None
         try:
             conexion = Conexion().obtener_conexion()
@@ -93,11 +93,11 @@ if __name__ == '__main__':
     #print(f'Clientes_actualizados: {clientes_actualizados}')
 
     # Eliminar un cliente existente
-    cliente_eliminar = Cliente(id=6)
-    clientes_eliminados = ClienteDAO.eliminar(cliente_eliminar)
-    print(f'Clientes_eliminados: {clientes_eliminados}')
+    # cliente_eliminar = Cliente(id=6)
+    # clientes_eliminados = ClienteDAO.eliminar(cliente_eliminar)
+    # print(f'Clientes_eliminados: {clientes_eliminados}')
 
     # Seleccionar Clientes
-    clientes = ClienteDAO.seleccionar(None)
+    clientes = ClienteDAO.seleccionar()
     for cliente in clientes:
         print(cliente)
