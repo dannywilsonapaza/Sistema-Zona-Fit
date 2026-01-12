@@ -38,7 +38,7 @@ class ClienteDAO:
             valores = (cliente.nombre, cliente.apellido, cliente.membresia)
             cursor.execute(cls.INSERTAR, valores)
             conexion.commit()
-            print(f'Se ha insertado el cliente: {cliente}')
+            return cursor.rowcount
         except Exception as e:
             print(f'Error al insertar cliente: {e}')
         finally:
@@ -47,11 +47,13 @@ class ClienteDAO:
                 Conexion.liberar_conexion(conexion)
 
 if __name__ == '__main__':
+
+    # Insertar un nuevo cliente
+    cliente1 = Cliente(nombre='Alejandra', apellido='Tellez', membresia='300')
+    clientes_insertados = ClienteDAO.insertar(cliente1)
+    print(f'Clientes_insertados: {clientes_insertados}')
+
     # Seleccionar Clientes
     clientes = ClienteDAO.seleccionar(None)
     for cliente in clientes:
         print(cliente)
-
-    # Insertar un nuevo cliente
-    nuevo_cliente = Cliente(nombre='Ana', apellido='Gomez', membresia='300')
-    ClienteDAO.insertar(nuevo_cliente)
